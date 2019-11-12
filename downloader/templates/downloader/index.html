@@ -16,7 +16,7 @@
 
 <body>
     <div>
-        <div class="col" style="background-color: #e6e3e3;padding: 2%;"><i class="fab fa-youtube" style="font-size: 30px;color: rgb(239,25,12);"></i><label style="font-size: 26px;font-family: Abel, sans-serif;letter-spacing: -1px;font-weight: bold;line-height: 38px;">MochaTube</label></div>
+        <div class="col" style="background-color: #e6e3e3;padding: 2%;"><a href="/" style="text-decoration: None;color:black"><i class="fab fa-youtube" style="font-size: 30px;color: rgb(239,25,12);"></i><label style="font-size: 26px;font-family: Abel, sans-serif;letter-spacing: -1px;font-weight: bold;line-height: 38px;">MochaTube</label></a></div>
     </div>
     <div>
         <div class="col" style="padding: 2%;">
@@ -24,6 +24,30 @@
                 <input class="form-control" name="url" type="text" style="width: 92%;padding-right: 6px;padding-left: 6px;" placeholder="Paste Video URL here."><button class="btn btn-primary border-light" type="submit" style="width: 8%;height: 38px;margin-left: 7px;background-color: rgb(239,25,12);padding-right: 6px;padding-left: 6px;"><i class="fas fa-search"></i></button></form>
                 {% if results %}
                 <label class="text-center border rounded border-light" style="width: 100%;padding: 1%;margin-bottom: 0px;margin-top: 2%;font-family: 'Scope One', serif;font-weight: bold;letter-spacing: 1px;font-size: 13px;background-color: #bee8bd;color:rgb(15,133,48)">Successfully Extracted Download Links !</label>
+                <div class="table-responsive table-borderless text-center border rounded" style="margin-top: 1%;margin-bottom: 0px;">
+                    <table class="table table-bordered table-hover table-sm">
+                        <thead style="background-color: #e6e3e3;">
+                            <tr>
+                                <th class="text-left" colspan="5" style="font-family: 'Scope One', serif;text-align-last: center;"><i class="fas fa-window-maximize" style="color: rgb(239,25,12);"></i>&nbsp;: {{ title }}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-info">
+                            <tr>
+                                <td rowspan="2"><img class="img-thumbnail border rounded-0 border-info shadow" style="width: 120px;height: 90px;margin-top:1%" src="{{ thumb }}" alt = "Thumbnail Not Available"><br></td>
+                                <td style="padding: 1%;width: 15%;height: 50px;"><i class="fas fa-thumbs-up" style="font-size: 26px;color: rgb(153,221,151);"></i></td>
+                                <td style="padding: 1%;width: 15%;"><i class="fas fa-thumbs-down" style="font-size: 26px;color: rgb(241,155,150);"></i></td>
+                                <td style="padding: 1%;width: 15%;"><i class="fas fa-eye" style="font-size: 26px;color: rgb(103,206,222);"></i></td>
+                                <td style="padding: 1%;width: 15%;"><i class="fas fa-clock" style="font-size: 26px;color: rgb(142,139,139);"></i></td>
+                            </tr>
+                            <tr>
+                                <td style="color: rgb(0,0,0);font-family: 'Scope One', serif;font-weight: bold;font-size: 14px;">{{ like }}</td>
+                                <td style="color: rgb(0,0,0);font-family: 'Scope One', serif;font-weight: bold;font-size: 14px;">{{dislike }}</td>
+                                <td style="color: rgb(0,0,0);font-family: 'Scope One', serif;font-weight: bold;font-size: 14px;">{{ view }}</td>
+                                <td style="color: rgb(0,0,0);font-family: 'Scope One', serif;font-weight: bold;font-size: 14px;">{{ duration }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="table-responsive table-borderless text-center border rounded" style="margin-top: 2%;margin-bottom: 5%;">
                     <table class="table table-bordered table-hover table-sm">
                         <thead style="background-color: #e6e3e3;">
@@ -40,7 +64,7 @@
                                 <td>{{ r.resolution }}</td>
                                 <td>{{ r.extension }}</td>
                                 <td>{{ r.size }}</td>
-                                <td><a class="border rounded border-light" href="{{ r.url }}" style="background-color: #79e75d;color: rgb(255,255,255);" download="{{ title }}.{{ r.extension }}" target="_blank"><i class="fas fa-download border rounded border-light" style="padding: 2%;font-size: 14px;"></i></a></td>
+                                <td><a class="border rounded border-light" href="{{ r.url }}" content_type='application/force-download'style="background-color: #79e75d;color: rgb(255,255,255);" download="{{ title }}.{{ r.extension }}" target="_blank"><i class="fas fa-download border rounded border-light" style="padding: 2%;font-size: 14px;"></i></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -51,7 +75,7 @@
                     <label class="text-center border rounded border-light" style="width: 100%;padding: 1%;margin-bottom: 0px;margin-top: 2%;font-family: 'Scope One', serif;font-weight: bold;letter-spacing: 1px;font-size: 13px;background-color: #edd0c9;color: rgb(207,15,3);">Oops! Couldn't find the video.</label>
                 </div>
             </div><i class="fas fa-sad-tear d-flex d-sm-flex justify-content-center justify-content-sm-center" style="font-size: 210px;padding: 5%;padding-top: 2%;color: rgb(244,183,168);padding-bottom: 0px;line-height: 210px;"></i><label class="d-flex justify-content-center"
-                style="font-family: 'Crete Round', serif;font-weight: bold;font-style: normal;font-size: 38px;line-height: 54px;padding-bottom: 2%;">Sorry</label>        
+                style="font-family: 'Crete Round', serif;font-weight: bold;font-style: normal;font-size: 38px;line-height: 54px;padding-bottom: 2%;">Sorry !</label>        
                 {% else %}
                 <label class="text-center border rounded border-light" style="width: 100%;padding: 1%;margin-bottom: 0px;margin-top: 2%;font-family: 'Scope One', serif;font-weight: bold;letter-spacing: 1px;font-size: 13px;background-color: #d8e3f4;color: rgb(23,51,150);">Visit Again , Use Again</label>
             </div>
@@ -62,7 +86,7 @@
         </div>
     </div>
     <div style="height: 108px;">
-        <div class="col text-center" style="padding: 2%;background-color: #e6e3e3;height: 123px;line-height: 12px;"><i class="fa fa-github d-flex justify-content-center" style="font-size: 44px;color: rgb(239,25,12);"></i><label class="text-monospace" style="font-weight: bold;line-height: 14px;font-size: 13px;color: rgb(92,14,14);letter-spacing: 1px;"><br>© 2019 MochaTek<br></label></div>
+        <div class="col text-center" style="padding: 2%;background-color: #e6e3e3;height: 123px;line-height: 12px;"><i class="fa fa-github d-flex justify-content-center" style="font-size: 44px;color: rgb(239,25,12);"></i><label class="text-monospace" style="font-weight: bold;line-height: 14px;font-size: 13px;color: rgb(92,14,14);letter-spacing: 1px;"><br><i class="far fa-copyright"></i> 2019 MochaTek<br></label></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

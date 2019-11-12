@@ -28,12 +28,19 @@ def index(request):
                     })
                 for s in video.audiostreams:
                     results.append({
-                        "resolution" :s.bitrate+" (Audio)",
-                        "extension" : s.extension,
+                        "resolution" :s.bitrate,
+                        "extension" : s.extension+" (Audio)",
                         "size" : sizeConvert(s.get_filesize()),
                         "url" : s.url
                     })
-                context = {"results":results, "title":video.title[:5]}
+                context = {"results":results,
+                "title":video.title,
+                "like":video.likes,
+                "dislike":video.dislikes,
+                "view":video.viewcount,
+                "duration":video.duration,
+                "thumb":video.thumb
+                }
             except:
                 context = {"results" : None,"success":False}
     return render(request, "downloader/index.html", context = context)
