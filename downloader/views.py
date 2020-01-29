@@ -19,14 +19,14 @@ def index(request):
             try:
                 results = []
                 video = pafy.new(url)
-                for s in video.streams:
+                for s in reversed(video.streams):
                     results.append({
                         "resolution" :s.resolution,
                         "extension" : s.extension+" (Video)",
                         "size" : sizeConvert(s.get_filesize()),
                         "url" : s.url
                     })
-                for s in video.audiostreams:
+                for s in reversed(video.audiostreams):
                     results.append({
                         "resolution" :s.bitrate,
                         "extension" : s.extension+" (Audio)",
